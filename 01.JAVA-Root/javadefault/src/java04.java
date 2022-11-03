@@ -1,5 +1,4 @@
 import java.text.DecimalFormat;
-// import java.util.Random;
 import java.util.Scanner;
 
 // Java04. 자바 제어문(if,switch,while,for문), 배열
@@ -67,30 +66,33 @@ public class java04 {
             System.out.println();
 
             /////////////////////////////////////
-            // 2. if문
-            // : 조건이 true일때 실행할 코드를 제어함
-
-            // if (조건문) {
-            // // 실행코드
-            // } else if (조건문) {
-            // // 실행코드
-            // } else {
-            // // 실행코드
-            // }
-
-            // if : 지정된 조건이 true인 경우 실행할 코드
-            // else if : 상단 조건이 false인 경우 새로운 조건 추가
-            // else : 모든 조건에 해당없을 경우 실행할 코드
-
+            /*
+             * 2. if문
+             * : 조건이 true일때 실행할 코드를 제어함
+             * 
+             * if (조건문) {
+             * // 실행코드
+             * } else if (조건문) {
+             * // 실행코드
+             * } else {
+             * // 실행코드
+             * }
+             * 
+             * if : 지정된 조건이 true인 경우 실행할 코드
+             * else if : 상단 조건이 false인 경우 새로운 조건 추가
+             * else : 모든 조건에 해당없을 경우 실행할 코드
+             */
             System.out.println("오늘은 당신의 생일인가요?(예/아니오)");
             String birth = myObj.nextLine();
             System.out.println();
             System.out.println(
                     birth.equals("예") ? "생일축하해요!" : "오늘도행복하세요!");
 
-            // 3. 삼항연산자(짧은 if문)
-            // 변수 = (조건문) ? true시 실행문 : false시 실행문;
-            // 비?집:놀이동산
+            /*
+             * 3. 삼항연산자(짧은 if문)
+             * 변수 = (조건문) ? true시 실행문 : false시 실행문;
+             * 비?집:놀이동산
+             */
 
             System.out.println();
             System.out.println("오늘 점심메뉴를 선택하세요!");
@@ -123,20 +125,22 @@ public class java04 {
 
             } //////////// switch ////////////////
 
-            // 4. switch 문
-
-            // : 단일조건을 분류하여 실행코드를 나눔
-
-            // switch(변수) {
-            // case x:
-            // // 실행코드
-            // break;
-            // case y:
-            // // 실행코드
-            // break;
-            // default:
-            // // 실행코드
-            // }
+            /*
+             * 4. switch 문
+             * 
+             * : 단일조건을 분류하여 실행코드를 나눔
+             * 
+             * switch(변수) {
+             * case x:
+             * // 실행코드
+             * break;
+             * case y:
+             * // 실행코드
+             * break;
+             * default:
+             * // 실행코드
+             * }
+             */
 
             System.out.println();
             System.out.println(
@@ -207,19 +211,24 @@ public class java04 {
 
             // 무지개색을 배열변수에 넣고 for문 돌리기
             String[] rainbow = {
-                    "빨강", "주황", "노랑", "초록", "파랑", "남", "보라"
-            };
-            System.out.println("#무지개색 종류는 순서대로");
+                    "빨강", "주황", "노랑", "초록", "파랑", "남", "보라" };
+            // 미션:
+            System.out.print("#무지개색 종류는 순서대로 ");
+            // for문 //////
             for (int i = 0; i < rainbow.length; i++) {
-                // 출력내용
-                System.out.println(rainbow[i] + "색");
+                System.out.print(rainbow[i] + "색");
+                // 마지막 배열일때
                 if (i == rainbow.length - 1) {
-                    System.out.println("입니다 \n\n");
-                } else {
-                    System.out.println(", ");
-                }
+                    System.out.print(" 입니다!\n\n");
+                } /////// if //////
+                  // 나머지 배열일때
+                else {
+                    System.out.print(", ");
+                } ////// else ///////
 
-            }
+                // 출력내용:
+                // 빨강색, 주황색, 노랑색, 초록색, 파랑색, 남색, 보라색 입니다!
+            } ////////////// for /////////////
 
             // 7. for문
             // - 지정된 횟수 만큼 코드를 반복실행하여 제어함
@@ -231,6 +240,49 @@ public class java04 {
             // (1) 시작값 : 변수선언과 시작값 할당
             // (2) 한계값 : 변수의 한계값 설정
             // (3) 증감 : 변수의 증가 / 감소
+
+            // ### 배열의 전체 축구선수 명단 중
+            // 올림픽경기에 나갈 선수만 표시하기(continue)
+            // 예비선수는 제외함(break)
+            String player[] = {
+                    "김기춘", "홍서범", "하준상", "이종학",
+                    "예비:이병준", "예비:서이룡"
+            };
+
+            System.out.println(
+                    "#축구 한국 대표팀 선수 전체명단:");
+            // for-each문
+            for (String mem : player) {
+                System.out.println(mem);
+            } ////////// for-each ////////////
+
+            System.out.println();
+
+            // "하준상"은 제외, "예비:이병준"부터 출력안함!
+            System.out.println(
+                    "#올림픽 경기에 참가할 축구선수 명단:");
+            /// for-each
+            for (String mem : player) {
+                // "하준상" 거르기 -> continue
+                if (mem == "하준상")
+                    continue;
+                // "예비:이병준" 부터 빠져나감! -> break
+                if (mem == "예비:이병준")
+                    break;
+                System.out.println(mem);
+            } /////////// for-each ////////////
+
+            // 8. for-each 문
+            // - 배열값 만큼 자동으로 변수에 할당하면 실행코드 반복 제어함
+
+            // for (타입선언변수 : 배열변수명) {
+            // // 실행코드
+            // }
+
+            // 9. for문 중단,계속 옵션 키워드
+            // (1) continue 빼고 계속
+            // (2) break 중단
+
         } ///////////////// try문 (스캐너) /////////////////////
           // catch문 (에러발생시 처리 구역)
         catch (Exception e) {
@@ -241,17 +293,7 @@ public class java04 {
             // 사용자가 보여주는 메시지
             System.out.println(
                     "꼭 숫자로 입력바랍니다!\n다시갑니다!\n");
-        }
+        } ////////////////// catch문 ///////////////////////
 
-        // 8. for-each 문
-        // - 배열값 만큼 자동으로 변수에 할당하면 실행코드 반복 제어함
-
-        // for (타입선언변수 : 배열변수명) {
-        // // 실행코드
-        // }
-
-        // 9. for문 중단,계속 옵션 키워드
-        // (1) continue 빼고 계속
-        // (2) break 중단
-    }
-}
+    } //// main메서드 ////
+} ///// class /////
