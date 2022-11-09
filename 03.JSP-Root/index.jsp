@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%-- 상단 지시어 --%>
-    <%! // 스크립트 요소 선언무 %>
+    <%! 
+        // 스크립트 요소 선언문
+        String str1 = "yoooo";
+        String str2 = "zzzzzzzzzzzzz"; 
+    %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -15,7 +19,7 @@
     <h1><%=str1%></h1>
     <p>
     <% //스크립트요소 (스크립트릿)
-        out.printIn(str2+"화이팅!!");
+        out.println(str2+"화이팅!!");
     %>
 </body>
 </html>
